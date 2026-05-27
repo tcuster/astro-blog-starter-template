@@ -6,6 +6,7 @@
 
 <!-- dash-content-start -->
 
+<!-- 
 Create a blog with Astro and deploy it on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
 
 Features:
@@ -58,7 +59,7 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Check out [our documentation](https://docs.astro.build) 
-
+-->
 ## Credit
 
 I'm changing everything. So, I'll take the credit, thanks. Thomas Custer.
