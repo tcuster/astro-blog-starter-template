@@ -3,7 +3,12 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
-<header>
+<header class="flex justify-between items-center p-4">
+  <h2><a href="/">{SITE_TITLE}</a></h2>
+  <nav class="flex gap-4 items-center">
+    <HeaderLink href="/">Home</HeaderLink>
+    <HeaderLink href="/blog">Blog</HeaderLink>
+    <ThemeToggle /> <!-- Inserted here -->
 	<nav>
 		<h2><a href="/">{SITE_TITLE}</a></h2>
 		<div class="internal-links">
