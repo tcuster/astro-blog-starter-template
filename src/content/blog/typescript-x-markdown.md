@@ -7,6 +7,8 @@ heroImage: "/blog-placeholder-5.jpg"
 
 I am trying to get this working, but it is not building 
 
+Update: I'm not implementing TypeScript into my markdown yet. For now, I'm just going to make markdown files to describe what I'm doing/learning.
+
 #2 Attempt Number 1
 
 Code:
