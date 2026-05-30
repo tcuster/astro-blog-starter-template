@@ -1,0 +1,100 @@
+---
+title: "Using TypeScript in MDX"
+description: "I dreamed it was possible"
+pubDate: "May 30 2026"
+heroImage: "/blog-placeholder-5.jpg"
+---
+
+#2 Attempt Number 1
+
+Code:
+```
+{/**
+  * @typedef {Object} Props
+  * @property {string} name
+  */}
+
+export function Hello({ name }) {
+  return <h1>Hello, {name}</h1>;
+}
+
+# Welcome to MDX, {props.name}
+```
+
+Results:
+{/**
+  * @typedef {Object} Props
+  * @property {string} name
+  */}
+
+export function Hello({ name }) {
+  return <h1>Hello, {name}</h1>;
+}
+
+# Welcome to MDX, {props.name}
+
+#2 Attempt Number 2
+
+Code:
+```
+{/* @ts-check */}
+
+export const FaqSection = ({ faqs }) => {
+  return (
+    <section>
+      {faqs.map((faq, i) => (
+        <details key={i}>
+          <summary>{faq.question}</summary>
+          <p>{faq.answer}</p>
+        </details>
+      ))}
+    </section>
+  );
+};
+
+/**
+ * @typedef {Object} FAQItem
+ * @property {string} question - The question to display.
+ * @property {string} answer - The answer provided.
+ */
+
+/**
+ * FaqSection properties.
+ * 
+ * @param {Object} props
+ * @param {FAQItem[]} props.faqs - An array of FAQ items.
+ * @returns {JSX.Element}
+ */
+```
+
+Results:
+{/* @ts-check */}
+
+export const FaqSection = ({ faqs }) => {
+  return (
+    <section>
+      {faqs.map((faq, i) => (
+        <details key={i}>
+          <summary>{faq.question}</summary>
+          <p>{faq.answer}</p>
+        </details>
+      ))}
+    </section>
+  );
+};
+
+/**
+ * @typedef {Object} FAQItem
+ * @property {string} question - The question to display.
+ * @property {string} answer - The answer provided.
+ */
+
+/**
+ * FaqSection properties.
+ * 
+ * @param {Object} props
+ * @param {FAQItem[]} props.faqs - An array of FAQ items.
+ * @returns {JSX.Element}
+ */
+
+
