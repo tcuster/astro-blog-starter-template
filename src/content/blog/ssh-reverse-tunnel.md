@@ -39,14 +39,20 @@ The SSH tunnel/reverse tunnel --whichever one it actually is matters little unti
 A third option appeared, less of a on-prem system solution (option 2, leaving that to my dev friend), and more of a token (classic) solution. I don't want to start over-engineering until my environment is functional regardless of geography.
 
 >Log into your account on the GitHub Website.
+>
 >Click your profile photo, then select Settings.
+>
 >In the left sidebar, click Developer settings.
+>
 >Select Personal access tokens -> Tokens (classic).
+>
 >Click Generate new token -> Generate new token (classic).
+>
 >Give your token a descriptive name and check the repo scope.
+>
 >Click Generate token and copy it immediately. You will not be able to see it again.
-
+>
 >git remove -v
 >git remote set-url origin https://github.com
-
+>
 >git config --global credential.helper cache
