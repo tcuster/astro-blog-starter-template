@@ -52,7 +52,8 @@ A third option appeared, less of a on-prem system solution (option 2, leaving th
 >
 >Click Generate token and copy it immediately. You will not be able to see it again.
 >
->git remove -v
+>git remote -v
+>
 >git remote set-url origin https://github.com
 >
 >git config --global credential.helper cache
