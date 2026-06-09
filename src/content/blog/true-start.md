@@ -1,7 +1,7 @@
 ---
 title: "The True Start"
 description: "Duck around and find out"
-pubDate: "May 30 2026"
+pubDate: "June 09 2026"
 heroImage: "/rubber-ducky.jpg"
 ---
 
