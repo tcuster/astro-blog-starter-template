@@ -10,7 +10,7 @@ heroImage: "/rubber-ducky.jpg"
 ### At the beginning of course ###  
 Part of learning something new is mulling over an idea.  
 I didn't do that right away, and that was a mistake I do not regret.  
-I could have arrived at this very same understanding if I had  
+I could have arrived at this very same understanding if I had
 - paused  
 - thought about it  
 - explored my options  
@@ -23,16 +23,16 @@ I convinced myself that it's the same to contemplate an idea, specifically using
 Equivocating that to prompting AI with the elements generated an answer that was eventually close to something that resembled a choice I might make.  
   
 ### I don't know what I don't know ###  
-So, here I am actually not thinking about going from the colossal mountain that is the functionality of Hugo(read Go):  
-*memory graphs  
-*binary compilation  
-*parallel threading  
-  
-–to the procedural scripting of Python:  
-*do this  
-*then, do this  
-*then, do this  
-  
+So, here I am actually not thinking about going from the colossal mountain that is the functionality of Hugo(read Go):
+* memory graphs  
+* binary compilation  
+* parallel threading  
+    
+to the procedural scripting of Python:  
+* do this  
+* then, do this  
+* then, do this  
+    
 ### The piece I was missing ###  
 In the past I would have figured out myself instead of leaning on AI–not just because it didn’t exist–to figure out exactly what is the point-of-entry that is a placeholder for Hugo.  
   
@@ -49,11 +49,11 @@ I want to mark a trail which others can follow from point A to point B
 A Python Script, which when it’s ran will generate the static website.  
 I don't have further details at this time, but like this post's title implies that was not my goal.  
 I met today's goal of finding the true start.  
-This start is specifically for the coding portion of the project, but there will certainly be other true starts for:  
--socials  
--blogging  
--docs  
--more!  
+This start is specifically for the coding portion of the project, but there will certainly be other true starts for:
+- socials  
+- blogging  
+- docs  
+- more!  
   
 ### *Take Care!* ###  
 Thomas Custer  
