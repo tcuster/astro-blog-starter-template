@@ -34,7 +34,7 @@ to the procedural scripting of Python:
 * then, do this  
     
 ### The piece I was missing  
-In the past I would have figured out myself instead of leaning on AI–not just because it didn’t exist–to figure out exactly what is the point-of-entry that is a placeholder for Hugo.  
+In the past I would have figured out myself instead of leaning on AI–not just because it didn’t exist–to figure out exactly what is the point-of-entry that is a placeholder for the Hugo alternative.  
   
 Rather than immediately building the site generator in GoLang, I could potentially, significantly benefit from first building something (a project) that lacks exceptional performance.  
   
