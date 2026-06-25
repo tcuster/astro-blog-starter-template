@@ -2,7 +2,7 @@
 title: "About abouts"
 description: "No doubts"
 pubDate: "June 25 2026"
-heroImage: "agent-smith-v01.jpg"
+heroImage: "/agent-smith-v01.jpg"
 ---
 
 ### Looking to get a smoother look  
