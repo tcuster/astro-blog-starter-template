@@ -1,0 +1,112 @@
+name: Deploy Astro Site
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Last Successful Build Time
+        id: last_build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Query the GitHub API for the last successful run of this specific workflow
+          RUN_DATA=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            # Gemini didn't like this line
+            # "https://github.com{{ github.repository }}/actions/workflows/deploy.yml/runs?status=success&per_page=1")
+            # It said this was the correct line for the job 
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/deploy.yml/runs?status=success&per_page=1"
+          LAST_RUN_DATE=$(echo "$RUN_DATA" | jq -r '.workflow_runs[0].created_at // "none"')
+          echo "last_run_date=$LAST_RUN_DATE" >> $GITHUB_OUTPUT
+
+      - name: Evaluate 72-Hour Cooldown
+        id: cooldown_check
+        env:
+          LAST_RUN: ${{ steps.last_build.outputs.last_run_date }}
+        run: |
+          if [ "$LAST_RUN" = "none" ]; then
+            echo "First successful build. Proceeding to post."
+            echo "should_post=true" >> $GITHUB_OUTPUT
+          else
+            CURRENT_TIME=$(date +%s)
+            LAST_RUN_SEC=$(date -d "$LAST_RUN" +%s)
+            DIFF_HOURS=$(( ($CURRENT_TIME - $LAST_RUN_SEC) / 3600 ))
+            
+            echo "Hours since last successful build: $DIFF_HOURS"
+            if [ "$DIFF_HOURS" -ge 72 ]; then
+              echo "should_post=true" >> $GITHUB_OUTPUT
+            else
+              echo "should_post=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Install Dependencies and Build Astro
+        run: |
+          npm ci
+          npm run build
+          # Add your normal cloud deployment command here if needed (Vercel, Netlify, GH Pages, etc.)
+          # Depending on where you host (e.g., GitHub Pages, Cloudflare Pages, Vercel, Netlify), 
+          # you'll need to add the deployment CLI command or action step here to publish the ./dist folder.
+
+      - name: Extract Latest Blog Title
+        if: steps.cooldown_check.outputs.should_post == 'true'
+        id: get_title
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            const blogDir = path.join(process.cwd(), 'src/content/blog'); 
+            
+            try {
+              const files = fs.readdirSync(blogDir).filter(f => f.endsWith('.md') || f.endsWith('.mdx'));
+              let latestTitle = "New updates are live!";
+              let latestDate = new Date(0);
+
+              files.forEach(file => {
+                const filePath = path.join(blogDir, file);
+                const content = fs.readFileSync(filePath, 'utf8');
+                
+                // Matches title frontmatter regardless of single, double, or no quotes
+                const titleMatch = content.match(/^title:\s*(["']?)(.*?)\1\s*$/m);
+                // Matches standard pubDate or date frontmatter keys
+                const dateMatch = content.match(/^(date|pubDate):\s*(.*?)\s*$/m);
+
+                if (titleMatch) {
+                  // Fall back to local file system modification time if frontmatter date parsing fails
+                  const fileDate = dateMatch ? new Date(dateMatch[2].replace(/['"]/g, '')) : fs.statSync(filePath).mtime;
+                  if (fileDate > latestDate) {
+                    latestDate = fileDate;
+                    latestTitle = titleMatch[2];
+                  }
+                }
+              });
+
+              core.setOutput('blog_title', latestTitle);
+            } catch (err) {
+              console.log("Error reading frontmatter, using default message:", err);
+              core.setOutput('blog_title', "New updates are live!");
+            }
+
+      - name: Post Announcement to X
+        if: steps.cooldown_check.outputs.should_post == 'true'
+        uses: mshick/add-twitter-reaction@v2
+        with:
+          consumer-key: ${{ secrets.TWITTER_CONSUMER_KEY }}
+          consumer-secret: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+          access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          access-token-secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          message: "New post: \"${{ steps.get_title.outputs.blog_title }}\" is up on the blog! Check it out."
