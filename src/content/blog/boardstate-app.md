@@ -151,40 +151,40 @@ Internal Navigation:
 	All players draw hands
 	First player takes mulligans followed by others in turn-order
 	
-	After last person declines a mulligan, first player takes first turn of the match
-	If you are first player, follow the app instructions, otherwise, pay attention to other players
-	Once your turn beings, follow the turn order app instructions, passing after each
-	Begin turn
-	(large animation)
+After last person declines a mulligan, first player takes first turn of the match
+If you are first player, follow the app instructions, otherwise, pay attention to other players
+Once your turn beings, follow the turn order app instructions, passing after each
+Begin turn
+(large animation)
 
-	Untap Step: You untap all permanents you control
-	(small animation)
-	Upkeep Step: Triggered abilities happen; players can cast instants.
-	(small animation)
-	Draw Step: You draw a card from your library.
-	(small animation)
-	Main phase 1: play a land if you can; cast any permanent/sorcery that will change combat
+Untap Step: You untap all permanents you control
+(small animation)
+Upkeep Step: Triggered abilities happen; players can cast instants.
+(small animation)
+Draw Step: You draw a card from your library.
+(small animation)
+Main phase 1: play a land if you can; cast any permanent/sorcery that will change combat
 
-	(large animation)
-	Combat phase
-	Beginning of Combat Step: Last chance to stop creatures from attacking.
-	(small animation)
-	Declare Attackers Step: Choose which creatures attack and who/what they attack.
-	(small animation)
-	Declare Blockers Step: Defending player chooses blockers.
-	(small animation)
-	Combat Damage Step: Damage is dealt simultaneously.
-	(small animation)
-	End of Combat Step: Combat phase wraps up.
-	(large animation)
+(large animation)
+Combat phase
+Beginning of Combat Step: Last chance to stop creatures from attacking.
+(small animation)
+Declare Attackers Step: Choose which creatures attack and who/what they attack.
+(small animation)
+Declare Blockers Step: Defending player chooses blockers.
+(small animation)
+Combat Damage Step: Damage is dealt simultaneously.
+(small animation)
+End of Combat Step: Combat phase wraps up.
+(large animation)
 
-	Main phase 2: play a land if you can; cast any permanent/sorcery that will change game state
-	(large animation)
+Main phase 2: play a land if you can; cast any permanent/sorcery that will change game state
+(large animation)
 
-	End phase
-	End step: “beginning of end step” triggers go on the stack
-	Cleanup step: Max Hand Size vs Current, and damage wears off
-	(large animation)
+End phase
+End step: “beginning of end step” triggers go on the stack
+Cleanup step: Max Hand Size vs Current, and damage wears off
+(large animation)
 
   
 ***Take Care!***  
